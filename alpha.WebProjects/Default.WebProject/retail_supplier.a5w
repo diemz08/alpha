@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<!-- must use in order to make XP Themes render -->
+<meta HTTP-EQUIV="MSThemeCompatible" content="Yes" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<head>
+
+
+<%a5
+Delete tmpl_RETAIL_SUP
+DIM tmpl_RETAIL_SUP as P
+tmpl_RETAIL_SUP = a5w_load_component("RETAIL_SUPPLIER") ''SYSTEM GENERATED COMMENT - PLEASE DO NOT REMOVE (LOAD:RETAIL_SUPPLIER)
+
+'Override settings start -----------------------------------------
+with tmpl_RETAIL_SUP
+.alias = "RETAIL_SUP"
+_dialogFilename = "RETAIL_SUPPLIER"
+end with 
+'Override settings end -----------------------------------------
+
+delete x_RETAIL_SUP
+dim x_RETAIL_SUP as p
+x_RETAIL_SUP = a5w_run_Component(tmpl_RETAIL_SUP) 'SYSTEM GENERATED COMMENT - PLEASE DO NOT REMOVE (RUN:tmpl) (EDIT:RETAIL_SUPPLIER)
+
+?x_RETAIL_SUP.Output.Head.JavaScript
+?x_RETAIL_SUP.Output.Head.CSS_Link
+
+?x_RETAIL_SUP.Output.Head.Title 
+%>
+
+
+<!--Alpha Five Temporary Code Start - Will be automatically removed when page is published -->
+<!--CSS for tmpl -->
+<link rel="stylesheet" type="text/css" href="file:///C:/Program Files (x86)/a5V12/css/forest/style.css">
+<!--Alpha Five Temporary Code End -->
+
+</head>
+
+
+<body class="page">
+
+
+
+
+<%a5 ?x_RETAIL_SUP.Output.Body.Dialog2_HTML %>
+<%a5 ?a5dialogHelper_generateCORSHeaders() %>
+
+</body>
+
+</html>
+
